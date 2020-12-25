@@ -40,6 +40,8 @@ function updateFrame() {
     currentFrame = ++currentFrame % cols;
     srcX = currentFrame * width;
     srcY = 0
+
+    ctx.clearRect(x, y, width, height);
 }
 
 function drawImage() {
@@ -49,6 +51,6 @@ function drawImage() {
 
 setInterval(function () {
     drawImage();
-}, 200);
+}, 100);
 
 
