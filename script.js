@@ -6,6 +6,12 @@ var canHeight = 300;
 var x = 0;
 var y = 0;
 
+var left = false;
+
+// track direction
+var trackLeft = 1;
+var trackRight = 0;
+
 //the coordinates of where we want to extract the img
 var srcX;
 var srcY;
@@ -32,6 +38,13 @@ canvas.width = canWidth;
 canvas.height = canHeight;
 var ctx = canvas.getContext('2d');
 
+function moveRight() {
+    left = false;
+}
+
+function moveLeft() {
+    moveRight = true;
+}
 // frame index
 var currentFrame = 0;
 
@@ -39,8 +52,12 @@ var currentFrame = 0;
 function updateFrame() {
     currentFrame = ++currentFrame % cols;
     srcX = currentFrame * width;
-    srcY = 0
-
+    if (left) {
+        srcY = trackLeft * height
+    }
+    else {
+        srcY = trackRight * height
+    }
     ctx.clearRect(x, y, width, height);
 }
 
